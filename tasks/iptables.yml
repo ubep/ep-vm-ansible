@@ -1,0 +1,16 @@
+---
+
+- name: Drop all current rules
+  command: iptables -F
+
+- name: Allow request from port 22
+  command: iptables -A INPUT -m state --state NEW -m tcp -p tcp --dport 22 -j ACCEPT
+
+- name: Allow request from port 80
+  command: iptables -A INPUT -m state --state NEW -m tcp -p tcp --dport 80 -j ACCEPT 
+
+- name: Allow request from port 8080
+  command: iptables -A INPUT -m state --state NEW -m tcp -p tcp --dport 8080 -j ACCEPT 
+
+- name: Save iptables rules
+  command: service iptables save

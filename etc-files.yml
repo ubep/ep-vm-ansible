@@ -1,0 +1,19 @@
+---
+
+- hosts: vms
+
+  tasks:
+
+   # check if config file was edited...
+   - fail: msg='Please configure the config.yml first!'
+     when: not IP or not HOSTNAME or not USERNAME
+
+   # configure etc/hosts and etc/sysconfig/network
+   - include: tasks/etc-hosts.yml
+   - include: tasks/etc-sysconfig-network.yml
+
+   # configure iptables
+   - include: tasks/iptables.yml
+
+  vars_files:
+   - vars/config.yml

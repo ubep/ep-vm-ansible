@@ -1,0 +1,7 @@
+---
+
+- name: Install ePages rpm
+  command: rpm -hiv http://ep-server/pub/epages/build/repo/{{EPAGES_VERSION}}/latest/yum/epages-release.noarch.rpm
+
+- name: Install ePages with yum
+  yum: name=@epages

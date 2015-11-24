@@ -1,0 +1,9 @@
+---
+
+- hosts: vms
+
+  tasks:
+   - include: tasks/install-epages.yml
+
+  vars_files:
+   - vars/epages.yml
